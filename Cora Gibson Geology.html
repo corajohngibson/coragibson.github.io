@@ -1,0 +1,303 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Cora Gibson Geology</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;700&family=Libre+Franklin:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: the page reads as a measured section — a stratigraphic column runs down the left as navigation, youngest unit (contact) on top */
+:root {
+  --bg: #EEF0EA;
+  --paper: #F8F9F5;
+  --ink: #1E2421;
+  --muted: #5B655F;
+  --rule: #C9CFC6;
+  --accent: #2F6B4E;      /* glauconite green */
+  --ochre: #A87A22;       /* limonite */
+  --shale: #7E8A86;
+  --sand: #D9C79B;
+  --lime: #C9CDBF;
+  --font-display: "Zilla Slab", Rockwell, "Roboto Slab", Georgia, serif;
+  --font-body: "Libre Franklin", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #161B19; --paper: #1D2421; --ink: #E4E8E2; --muted: #9AA59F; --rule: #36403B;
+    --accent: #6FB892; --ochre: #D3A54A; --shale: #5E6A66; --sand: #8C7A50; --lime: #4A5049;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #161B19; --paper: #1D2421; --ink: #E4E8E2; --muted: #9AA59F; --rule: #36403B;
+  --accent: #6FB892; --ochre: #D3A54A; --shale: #5E6A66; --sand: #8C7A50; --lime: #4A5049;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: 16px; line-height: 1.6;
+}
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--ochre); outline-offset: 3px; }
+
+.wrap {
+  max-width: 1120px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 48px 64px;
+  display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 56px;
+}
+
+/* ---------- strat column nav ---------- */
+.column { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 24px); align-self: start; }
+.column .label { font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+.column ol { list-style: none; margin: 0; padding: 0; border-left: 1.5px solid var(--ink); }
+.column li a {
+  display: grid; grid-template-columns: 44px 1fr; align-items: center; gap: 10px;
+  text-decoration: none; color: var(--ink);
+}
+.unit { display: block; border: 1.5px solid var(--ink); border-left: 0; margin-top: -1.5px; }
+.column li a span.name { font-size: 13px; line-height: 1.2; }
+.column li a:hover span.name { color: var(--accent); }
+.column li a:hover .unit { filter: saturate(1.4); }
+.u-contact { height: 30px; background: var(--paper); }
+.u-skills  { height: 46px; background: var(--lime) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='12'%3E%3Cpath d='M0 .5h20M0 6.5h20M10 0v6M0 6v6M20 6v6' stroke='%23000' stroke-opacity='.35' fill='none'/%3E%3C/svg%3E"); }
+.u-course  { height: 38px; background: var(--shale) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='6'%3E%3Cpath d='M1 3h7' stroke='%23000' stroke-opacity='.35'/%3E%3C/svg%3E"); }
+.u-field   { height: 72px; background: var(--sand) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10'%3E%3Ccircle cx='2' cy='3' r='.9' fill='%23000' fill-opacity='.4'/%3E%3Ccircle cx='7' cy='8' r='.9' fill='%23000' fill-opacity='.4'/%3E%3C/svg%3E"); }
+.u-about   { height: 40px; background: var(--ochre) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14'%3E%3Cpath d='M2 12 7 2l5 10' stroke='%23000' stroke-opacity='.35' fill='none'/%3E%3C/svg%3E"); }
+.column .scale { margin-top: 14px; font-family: var(--font-mono); font-size: 10.5px; color: var(--muted); line-height: 1.5; }
+
+/* ---------- content ---------- */
+main { min-width: 0; display: grid; gap: 88px; }
+section { scroll-margin-top: 24px; }
+.eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); display: flex; gap: 12px; align-items: baseline; }
+.eyebrow b { color: var(--ochre); font-weight: 500; }
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; line-height: 1.08; }
+h1 { font-size: clamp(48px, 9vw, 96px); font-weight: 700; letter-spacing: -.01em; margin-top: 14px; }
+h2 { font-size: clamp(30px, 4.4vw, 42px); font-weight: 700; margin-top: 8px; }
+h3 { font-size: 22px; font-weight: 500; }
+.lede { font-size: 19px; max-width: 58ch; margin: 22px 0 0; }
+.meta { display: flex; flex-wrap: wrap; gap: 8px 28px; margin-top: 26px; font-family: var(--font-mono); font-size: 13px; color: var(--muted); }
+.meta span strong { color: var(--ink); font-weight: 500; }
+
+.todo {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: .04em;
+  color: var(--ochre); border: 1px dashed var(--ochre); border-radius: 3px;
+  padding: 1px 6px; white-space: nowrap; vertical-align: 2px;
+}
+
+/* field projects */
+.projects { display: grid; gap: 0; margin-top: 28px; border-top: 1.5px solid var(--ink); }
+.project {
+  display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 32px;
+  padding-block: 28px; border-bottom: 1px solid var(--rule);
+}
+.project .side { font-family: var(--font-mono); font-size: 12.5px; color: var(--muted); display: grid; gap: 4px; align-content: start; }
+.project .side .loc { color: var(--ink); font-size: 13px; }
+.strikedip { display: inline-flex; align-items: center; gap: 8px; margin-top: 6px; }
+.strikedip svg { width: 22px; height: 22px; }
+.project p { margin: 10px 0 0; max-width: 62ch; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+.tags span { font-family: var(--font-mono); font-size: 11.5px; padding: 2px 8px; border: 1px solid var(--rule); border-radius: 2px; color: var(--muted); }
+.figure {
+  margin-top: 16px; aspect-ratio: 16 / 7; max-width: 100%;
+  border: 1px solid var(--rule); background: var(--paper);
+  display: grid; place-items: center; text-align: center; padding: 16px;
+  font-family: var(--font-mono); font-size: 12px; color: var(--muted);
+  background-image: repeating-linear-gradient(135deg, transparent 0 10px, color-mix(in srgb, var(--rule) 45%, transparent) 10px 11px);
+}
+
+/* skills */
+.skills { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; margin-top: 28px; }
+.skills h3 { font-size: 18px; padding-bottom: 8px; border-bottom: 1.5px solid var(--ink); }
+.skills ul { list-style: none; padding: 0; margin: 12px 0 0; display: grid; gap: 8px; font-size: 15px; }
+.skills li { display: flex; justify-content: space-between; gap: 12px; }
+.skills li em { font-style: normal; font-family: var(--font-mono); font-size: 11.5px; color: var(--muted); white-space: nowrap; }
+
+/* coursework */
+.courses { margin-top: 24px; overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; min-width: 480px; font-size: 15px; }
+th { text-align: left; font-family: var(--font-mono); font-size: 11.5px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); padding: 0 12px 8px 0; border-bottom: 1.5px solid var(--ink); }
+td { padding: 11px 12px 11px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+td.code { font-family: var(--font-mono); font-size: 13px; color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+
+/* contact */
+.contact { background: var(--paper); border: 1.5px solid var(--ink); padding: 32px; display: grid; gap: 18px; }
+.contact-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.email { font-family: var(--font-mono); font-size: 16px; user-select: all; word-break: break-all; }
+button.copy {
+  font: 500 13px var(--font-body); color: var(--paper); background: var(--accent);
+  border: 0; padding: 7px 14px; border-radius: 2px; cursor: pointer;
+}
+button.copy:hover { filter: brightness(1.1); }
+.links { display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: 15px; }
+
+footer { font-family: var(--font-mono); font-size: 11.5px; color: var(--muted); border-top: 1px solid var(--rule); padding-top: 16px; }
+
+/* ---------- narrow ---------- */
+@media (max-width: 760px) {
+  .wrap { grid-template-columns: minmax(0, 1fr); gap: 32px; padding-block: 28px 48px; }
+  .column { position: static; }
+  .column ol { display: flex; border-left: 0; border-top: 1.5px solid var(--ink); }
+  .column li { flex: 1; min-width: 0; }
+  .column li a { grid-template-columns: 1fr; gap: 6px; }
+  .unit { height: 16px !important; border: 1.5px solid var(--ink); border-top: 0; margin: 0 0 0 -1.5px; }
+  .column li a span.name { font-size: 11px; text-align: center; }
+  .column .scale, .column .label { display: none; }
+  .project { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .skills { grid-template-columns: minmax(0, 1fr); }
+  .contact { padding: 22px; }
+}
+</style>
+
+<div class="wrap">
+  <nav class="column" aria-label="Sections">
+    <div class="label">Section</div>
+    <ol>
+      <li><a href="#contact"><span class="unit u-contact"></span><span class="name">Contact</span></a></li>
+      <li><a href="#skills"><span class="unit u-skills"></span><span class="name">Skills &amp; methods</span></a></li>
+      <li><a href="#coursework"><span class="unit u-course"></span><span class="name">Coursework</span></a></li>
+      <li><a href="#field"><span class="unit u-field"></span><span class="name">Field &amp; research</span></a></li>
+      <li><a href="#about"><span class="unit u-about"></span><span class="name">About</span></a></li>
+    </ol>
+    <div class="scale">Younging ↑<br>Not to scale</div>
+  </nav>
+
+  <main>
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="eyebrow"><b>Unit 1</b> Portfolio · Geology</div>
+      <h1>Cora Gibson</h1>
+      <p class="lede">Geology student at DePauw University. <span class="todo">EDIT</span> Write two or three sentences here on what draws you to geology: the rocks, landscapes or questions you keep coming back to, and the kind of work you want to do next.</p>
+      <div class="meta">
+        <span><strong>B.A. Geology</strong> · Class of 2027</span>
+        <span>Greencastle, Indiana</span>
+        <span>Interests: <strong>add 2–3</strong></span>
+      </div>
+    </section>
+
+    <!-- FIELD -->
+    <section id="field">
+      <div class="eyebrow"><b>Unit 2</b> Field &amp; research</div>
+      <h2>Field work and projects</h2>
+      <div class="projects">
+        <article class="project">
+          <div class="side">
+            <span class="loc">Location, County, State</span>
+            <span>Semester · Year</span>
+            <span class="strikedip">
+              <svg viewBox="0 0 22 22" aria-hidden="true"><path d="M3 11h16M11 11v6" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+              <span>N35°E, 12°SE</span>
+            </span>
+          </div>
+          <div>
+            <h3>Example project: mapping a local outcrop <span class="todo">EXAMPLE</span></h3>
+            <p>Replace with a real project. Say what the question was, what you did in the field or lab, and what you found. One short paragraph is plenty; link a poster or report if you have one.</p>
+            <div class="figure">Space for a field photo, map or cross-section</div>
+            <div class="tags"><span>Field mapping</span><span>Brunton compass</span><span>ArcGIS Pro</span></div>
+          </div>
+        </article>
+        <article class="project">
+          <div class="side">
+            <span class="loc">Course or lab name</span>
+            <span>Semester · Year</span>
+          </div>
+          <div>
+            <h3>Example project: thin-section petrography <span class="todo">EXAMPLE</span></h3>
+            <p>Replace with lab work, a class research project, a summer field camp, or an REU. Include the methods you used and one clear result.</p>
+            <div class="tags"><span>Petrographic microscope</span><span>Mineral ID</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- COURSEWORK -->
+    <section id="coursework">
+      <div class="eyebrow"><b>Unit 3</b> Coursework</div>
+      <h2>Relevant courses</h2>
+      <div class="courses">
+        <table>
+          <thead><tr><th>Code</th><th>Course</th><th>Highlight</th></tr></thead>
+          <tbody>
+            <tr><td class="code">GEOS ___</td><td>Mineralogy</td><td>Add a one-line highlight <span class="todo">EDIT</span></td></tr>
+            <tr><td class="code">GEOS ___</td><td>Sedimentology &amp; Stratigraphy</td><td>Add a one-line highlight</td></tr>
+            <tr><td class="code">GEOS ___</td><td>Structural Geology</td><td>Add a one-line highlight</td></tr>
+            <tr><td class="code">GEOS ___</td><td>GIS / Remote Sensing</td><td>Add a one-line highlight</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="eyebrow"><b>Unit 4</b> Skills &amp; methods</div>
+      <h2>What I can do</h2>
+      <div class="skills">
+        <div>
+          <h3>Field</h3>
+          <ul>
+            <li>Geologic mapping <em>keep / cut</em></li>
+            <li>Strike &amp; dip measurement</li>
+            <li>Measured sections</li>
+            <li>Sample collection</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Lab</h3>
+          <ul>
+            <li>Hand-sample ID</li>
+            <li>Thin-section petrography</li>
+            <li>Grain-size analysis</li>
+            <li>XRD / XRF <em>if used</em></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Software</h3>
+          <ul>
+            <li>ArcGIS Pro / QGIS</li>
+            <li>Stereonet</li>
+            <li>Excel</li>
+            <li>Python or R <em>if used</em></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="eyebrow"><b>Unit 5</b> Contact</div>
+      <h2>Get in touch</h2>
+      <div class="contact" style="margin-top:24px">
+        <div class="contact-row">
+          <span class="email" id="email">coragibson_2027@depauw.edu</span>
+          <button class="copy" id="copy-btn" type="button">Copy email</button>
+        </div>
+        <div class="links">
+          <span>Résumé (PDF) <span class="todo">ADD LINK</span></span>
+          <span>LinkedIn <span class="todo">ADD LINK</span></span>
+        </div>
+      </div>
+    </section>
+
+    <footer>Cora Gibson · Department of Geosciences, DePauw University</footer>
+  </main>
+</div>
+
+<script>
+document.getElementById('copy-btn').addEventListener('click', function () {
+  var btn = this, text = document.getElementById('email').textContent;
+  function done(){ btn.textContent = 'Copied'; setTimeout(function(){ btn.textContent = 'Copy email'; }, 1600); }
+  function fallback(){
+    var r = document.createRange(); r.selectNodeContents(document.getElementById('email'));
+    var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+    btn.textContent = 'Selected — press Ctrl+C';
+  }
+  try { navigator.clipboard.writeText(text).then(done, fallback); } catch (e) { fallback(); }
+});
+</script>
+
+</body></html>
