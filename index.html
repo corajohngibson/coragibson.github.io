@@ -87,6 +87,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ochre); outline
 .u-course  { height: 56px; background: var(--shale) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='7'%3E%3Cpath d='M1 3.5h8' stroke='%23000' stroke-opacity='.35'/%3E%3C/svg%3E"); }
 .u-field   { height: 96px; background: var(--sand) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='11'%3E%3Ccircle cx='2' cy='3' r='1' fill='%23000' fill-opacity='.4'/%3E%3Ccircle cx='8' cy='8.5' r='1' fill='%23000' fill-opacity='.4'/%3E%3C/svg%3E"); }
 .u-intern  { height: 70px; background: var(--conglom) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='22'%3E%3Cellipse cx='7' cy='7' rx='4.5' ry='3.2' fill='none' stroke='%23000' stroke-opacity='.4'/%3E%3Cellipse cx='19' cy='16' rx='3.5' ry='2.6' fill='none' stroke='%23000' stroke-opacity='.4'/%3E%3Ccircle cx='18' cy='5' r='1' fill='%23000' fill-opacity='.4'/%3E%3Ccircle cx='6' cy='17' r='1' fill='%23000' fill-opacity='.4'/%3E%3C/svg%3E"); }
+.u-inv     { height: 50px; background: var(--sand) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='10'%3E%3Cpath d='M0 8l4.5-6 4.5 6 4.5-6 4.5 6' stroke='%23000' stroke-opacity='.3' fill='none'/%3E%3C/svg%3E"); }
 .u-about   { height: 56px; background: var(--ochre) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath d='M2 14 8 2l6 12' stroke='%23000' stroke-opacity='.35' fill='none'/%3E%3C/svg%3E"); }
 .column .scale { margin-top: 16px; font-family: var(--font-mono); font-size: 11px; color: var(--muted); line-height: 1.5; }
 
@@ -105,9 +106,18 @@ h3 { font-size: 21px; font-weight: 400; line-height: 1.3; }
 .degree { font-family: var(--font-cute); display: grid; gap: 2px; padding: 6px 0 10px 20px; border-left: 2px solid var(--rose); font-size: 15px; line-height: 1.4; color: var(--muted); }
 .degree strong { color: var(--ink); font-weight: 600; font-size: 16px; }
 #about { container-type: inline-size; }
-.focus { font-family: var(--font-cute); display: flex; flex-wrap: nowrap; align-items: center; margin: 26px 0 0; font-size: clamp(12px, calc((100cqi - 120px) / 60), 16px); font-weight: 500; color: var(--ink); letter-spacing: 0; }
-.focus span { white-space: nowrap; }
-.focus span + span::before { content: ""; display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: var(--rose); margin: 0 10px; vertical-align: middle; transform: translateY(-1px); }
+.focus { margin: 26px 0 0; display: grid; grid-template-columns: minmax(0, 1fr); min-width: 0; font-family: var(--font-cute); font-size: 15px; font-weight: 500; color: var(--ink);
+  background: var(--rose-soft); border: 2px dashed color-mix(in srgb, var(--rose) 70%, transparent); border-radius: 999px; padding: 7px 6px; max-width: 760px; box-shadow: 0 0 0 5px var(--bg), 0 0 0 6.5px color-mix(in srgb, var(--rose) 25%, transparent); }
+.marquee { overflow: hidden; min-width: 0;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent); mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent); }
+.marquee-track { display: flex; width: max-content; animation: slideRight 80s linear infinite; }
+.marquee.slow .marquee-track { animation-duration: 58s; }
+.focus:hover .marquee-track { animation-play-state: paused; }
+.marquee-group { display: flex; align-items: center; flex: none; }
+.marquee-group span { white-space: nowrap; display: inline-flex; align-items: center; }
+.marquee-group span::after { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--rose); margin: 0 14px; flex: none; }
+@keyframes slideRight { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+@media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; width: auto; } .marquee { -webkit-mask-image: none; mask-image: none; padding: 0 14px; } .marquee-group[aria-hidden] { display: none; } .marquee-group { flex-wrap: wrap; row-gap: 6px; justify-content: center; } .focus { border-radius: 22px; } }
 
 .todo {
   font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .04em;
@@ -144,7 +154,7 @@ h3 { font-size: 21px; font-weight: 400; line-height: 1.3; }
 @media (prefers-reduced-motion: reduce) { .doodle { animation: none !important; } }
 /* strata divider between About Me and Internships: dashed "subsurface" contacts that fade out at both ends */
 .strata { margin-block: -40px; }
-#internships, #field, #coursework, #skills, #contact { margin-top: -34px; }
+#internships, #field, #coursework, #involvement, #skills, #contact { margin-top: -34px; }
 .strata svg { display: block; width: 100%; height: 80px; overflow: visible;
   -webkit-mask-image: linear-gradient(to right, transparent, #000 14%, #000 86%, transparent);
           mask-image: linear-gradient(to right, transparent, #000 14%, #000 86%, transparent); }
@@ -159,7 +169,7 @@ h2.section-title::after { content: ""; display: block; width: min(220px, 60%); m
 #internships .entry:first-child { padding-top: 8px; }
 /* floating doodles around the page */
 .title-wrap { position: relative; }
-.title-wrap .cw-book { width: 82px; left: calc(50% + 250px); margin-top: -44px; animation-delay: -1.2s; }
+.title-wrap .cw-book { width: 82px; left: calc(50% + 252px); margin-top: -44px; animation-delay: -1.2s; }
 #coursework .stack { margin-top: 30px; }
 .course-togs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 22px; align-items: start; }
 .course-tog { background: var(--paper); border: 2px solid var(--rose); border-radius: 16px; overflow: hidden; transition: border-color .2s ease; }
@@ -318,6 +328,15 @@ section.deco { position: relative; }
 .deck.photos.is-full .deck-frame { width: min(1100px, 100%, calc(100vh - 190px)); background: transparent; }
 .deck.is-full .deck-count { color: #e8dcdc; }
 .deck.is-full .deck-count b { color: #fff; }
+/* Involvement */
+.inv-star { width: 58px; left: calc(50% + 140px); margin-top: -34px; animation-delay: -2s; }
+.inv-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; margin-top: 54px; }
+.inv-card { position: relative; background: var(--paper); border: 2px solid var(--rose); border-radius: 22px; padding: 46px 26px 24px; text-align: center; min-width: 0; transition: transform .25s ease; }
+.inv-card:hover { transform: translateY(-4px) rotate(-.5deg); }
+.inv-card h3 { margin: 0; font-size: 26px; -webkit-text-stroke: .02em var(--ink); }
+.inv-role { margin: 4px 0 0; font-family: var(--font-cute); font-size: 17px; font-weight: 700; color: var(--rose); }
+.inv-meta { margin: 6px 0 0; font-family: var(--font-cute); font-size: 13px; color: var(--muted); }
+.inv-text { margin: 14px auto 0; max-width: 46ch; font-family: var(--font-cute); font-size: 14.5px; line-height: 1.7; }
 /* "The Specs" toggle */
 .specs { margin-top: 20px; }
 .specs summary {
@@ -455,7 +474,7 @@ footer { font-size: 14px; color: var(--muted); border-top: 1px solid var(--rule)
   .column li { flex: 1; min-width: 0; }
   .column li a { grid-template-columns: 1fr; gap: 6px; }
   .unit { height: 22px !important; border: 2px solid var(--ink); border-top: 0; margin: 0 0 0 -2px; }
-  .column li a span.name { font-size: 11px; text-align: center; }
+  .column li a span.name { font-size: 9.5px; text-align: center; overflow-wrap: anywhere; line-height: 1.2; }
   .column .scale, .column .label { display: none; }
   .entry { grid-template-columns: minmax(0, 1fr); gap: 6px; }
   .about { gap: 36px; }
@@ -475,6 +494,8 @@ footer { font-size: 14px; color: var(--muted); border-top: 1px solid var(--rule)
   .title-wrap .cw-book { display: none; }
   h2.section-title { font-size: 32px; }
   .course-togs { grid-template-columns: minmax(0, 1fr); }
+  .inv-cards { grid-template-columns: minmax(0, 1fr); gap: 50px; }
+  .inv-star { width: 42px; left: calc(50% + 96px); margin-top: -24px; }
   .skill-cards { grid-template-columns: minmax(0, 1fr); gap: 50px; }
   .sk-compass { width: 56px; left: calc(50% + 70px); margin-top: -28px; }
   .sk-spark { width: 48px; right: calc(50% + 74px); margin-top: -22px; }
@@ -488,7 +509,7 @@ footer { font-size: 14px; color: var(--muted); border-top: 1px solid var(--rule)
   .courses, .skills { grid-template-columns: minmax(0, 1fr); gap: 28px; }
   .contact { padding: 24px 18px; }
   .contact-env { width: 72px; top: -26px; right: -10px; }
-  .focus { flex-wrap: wrap; row-gap: 4px; font-size: 14px; }
+  .focus { font-size: 15px; }
 }
 </style>
 
@@ -502,7 +523,8 @@ footer { font-size: 14px; color: var(--muted); border-top: 1px solid var(--rule)
       <li><a href="#about-me"><span class="unit u-about"></span><span class="name">About Me</span></a></li>
       <li><a href="#internships"><span class="unit u-intern"></span><span class="name">Internships</span></a></li>
       <li><a href="#field"><span class="unit u-field"></span><span class="name">Field Work</span></a></li>
-      <li><a href="#coursework"><span class="unit u-course"></span><span class="name">Research &amp; Coursework</span></a></li>
+      <li><a href="#coursework"><span class="unit u-course"></span><span class="name">Research</span></a></li>
+      <li><a href="#involvement"><span class="unit u-inv"></span><span class="name">Involvement</span></a></li>
       <li><a href="#skills"><span class="unit u-skills"></span><span class="name">Skills</span></a></li>
       <li><a href="#contact"><span class="unit u-contact"></span><span class="name">Contact</span></a></li>
     </ol>
@@ -519,7 +541,9 @@ footer { font-size: 14px; color: var(--muted); border-top: 1px solid var(--rule)
           <span>DePauw University ’27</span>
         </div>
       </div>
-      <p class="focus" aria-label="Areas of focus"><span>Structural Geology</span><span>Sedimentology</span><span>Geohazard Risk Assessment</span><span>Slope Stability</span><span>Landslide Monitoring</span><span>Project Management</span></p>
+      <div class="focus" aria-label="Areas of focus">
+        <div class="marquee"><div class="marquee-track"><div class="marquee-group"><span>Structural Geology</span><span>Sedimentology</span><span>Geohazard Risk Assessment</span><span>Environmental Compliance</span><span>Slope Stability</span><span>Remediation</span><span>Landslide Monitoring</span><span>Emergency Response</span><span>Hydrogeology</span><span>Stormwater &amp; NPDES</span><span>Geotechnical Engineering</span><span>GIS Mapping</span><span>Seismic Analysis</span><span>Project Management</span></div><div class="marquee-group" aria-hidden="true"><span>Structural Geology</span><span>Sedimentology</span><span>Geohazard Risk Assessment</span><span>Environmental Compliance</span><span>Slope Stability</span><span>Remediation</span><span>Landslide Monitoring</span><span>Emergency Response</span><span>Hydrogeology</span><span>Stormwater &amp; NPDES</span><span>Geotechnical Engineering</span><span>GIS Mapping</span><span>Seismic Analysis</span><span>Project Management</span></div></div></div>
+      </div>
     </section>
 
     <!-- ABOUT ME -->
@@ -816,7 +840,7 @@ footer { font-size: 14px; color: var(--muted); border-top: 1px solid var(--rule)
 
     <section id="coursework">
       <div class="title-wrap reveal">
-        <h2 class="section-title">Research &amp; Coursework</h2>
+        <h2 class="section-title">Coursework &amp; Research</h2>
         <svg class="doodle fl fl-right cw-book" viewBox="0 0 100 100" aria-hidden="true"><rect x="22" y="12" width="58" height="76" rx="6" fill="var(--paper)" class="o"/><rect x="22" y="12" width="12" height="76" rx="0" fill="var(--rose-soft)"/><rect x="22" y="12" width="58" height="76" rx="6" fill="none" class="o"/><g class="ln" style="stroke-width:1.6;opacity:.5"><path d="M42 30h28M42 40h28M42 50h22"/></g><path d="M44 72l8-10l6 6l6-9l8 13z" fill="var(--granite)" class="o" style="stroke-width:1.8"/><g transform="rotate(35 80 70)"><rect x="74" y="40" width="10" height="40" rx="2" fill="var(--sun)" class="o"/><path d="M74 80l5 10l5-10z" fill="var(--sand)" class="o"/><rect x="74" y="36" width="10" height="7" rx="2" fill="var(--rose)" class="o"/></g></svg>
       </div>
       <div class="stack">
@@ -918,6 +942,40 @@ footer { font-size: 14px; color: var(--muted); border-top: 1px solid var(--rule)
     </section>
 
     <!-- SKILLS -->
+    <div class="strata" aria-hidden="true">
+      <svg viewBox="0 0 1200 84" preserveAspectRatio="none">
+        <path d="M0 14C150 4 300 22 450 14S750 4 900 12 1100 22 1200 12" class="s1"/>
+        <path d="M0 26C160 18 320 34 480 26S780 16 940 25 1110 33 1200 24" class="s2"/>
+        <path d="M0 37C140 31 300 44 470 37S770 29 930 36 1100 43 1200 35" class="s3"/>
+        <path d="M0 50C150 42 300 58 450 50S750 41 900 49 1100 58 1200 48" class="s1"/>
+        <path d="M0 62C160 55 320 70 480 62S780 53 940 61 1110 69 1200 60" class="s2"/>
+        <path d="M0 73C140 68 300 80 470 73S770 66 930 72 1100 79 1200 71" class="s3"/>
+      </svg>
+    </div>
+
+    <section id="involvement">
+      <div class="title-wrap reveal">
+        <h2 class="section-title">Involvement</h2>
+        <svg class="doodle fl fl-right inv-star" viewBox="0 0 60 60" aria-hidden="true"><path d="M30 6l6.6 14.2 15.4 1.8-11.4 10.6 3 15.4L30 40.4 16.4 48l3-15.4L8 22l15.4-1.8z" fill="var(--sun)" class="o" style="stroke-width:2.2;stroke-linejoin:round"/><circle cx="25" cy="27" r="1.6" fill="var(--ink)"/><circle cx="35" cy="27" r="1.6" fill="var(--ink)"/><path d="M26 32q4 3 8 0" fill="none" stroke="var(--ink)" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </div>
+      <div class="inv-cards">
+        <article class="inv-card reveal">
+          <span class="skill-badge"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M8 14l16-5 16 5 16-5v41l-16 5-16-5-16 5z" fill="var(--paper)" stroke="var(--ink)" stroke-width="2" stroke-linejoin="round"/><path d="M24 9v41M40 14v41" stroke="var(--ink)" stroke-width="1.6" opacity=".6"/><path d="M12 36c5-6 9-2 12-7s9-3 12 1 10-2 14-6" fill="none" stroke="var(--water)" stroke-width="2.4" stroke-linecap="round"/><path d="M46 22c-3.5-2.6-5.4-4.5-5.4-6.6a2.8 2.8 0 0 1 5.4-.9a2.8 2.8 0 0 1 5.4.9c0 2.1-1.9 4-5.4 6.6z" fill="var(--rose)" stroke="var(--ink)" stroke-width="1.4"/></svg></span>
+          <h3>Field Atlas</h3>
+          <p class="inv-role">Intern</p>
+          <p class="inv-meta"><span class="todo">ADD</span> Dates · Location</p>
+          <p class="inv-text fill">What the role is, what you worked on, and one thing you're proud of.</p>
+        </article>
+        <article class="inv-card reveal">
+          <span class="skill-badge"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M14 50C10 30 22 12 50 12c2 24-12 40-36 38z" fill="var(--crystal)" stroke="var(--ink)" stroke-width="2" stroke-linejoin="round"/><path d="M14 50C24 38 32 30 44 20" fill="none" stroke="var(--ink)" stroke-width="1.8" stroke-linecap="round"/><path d="M26 38l-2-8M34 30l-1-8M30 34l8 1M22 42l8 1" stroke="var(--ink)" stroke-width="1.4" stroke-linecap="round" opacity=".6"/></svg></span>
+          <h3>Hillman</h3>
+          <p class="inv-role">Intern</p>
+          <p class="inv-meta"><span class="todo">ADD</span> Dates · Location</p>
+          <p class="inv-text fill">What the role is, what you worked on, and one thing you're proud of.</p>
+        </article>
+      </div>
+    </section>
+
     <div class="strata" aria-hidden="true">
       <svg viewBox="0 0 1200 84" preserveAspectRatio="none">
         <path d="M0 14C150 4 300 22 450 14S750 4 900 12 1100 22 1200 12" class="s1"/>
@@ -1049,19 +1107,7 @@ footer { font-size: 14px; color: var(--muted); border-top: 1px solid var(--rule)
   document.addEventListener('keydown', function(e){ if(e.key==='Escape' && !box.hidden) shut(); });
 })();
 
-// keep the focus line on one line on wider screens: shrink it slightly if the real font runs wide
-(function(){
-  var f=document.querySelector('.focus'); if(!f) return;
-  function fit(){
-    f.style.fontSize='';
-    if (getComputedStyle(f).flexWrap!=='nowrap') return;
-    var size=parseFloat(getComputedStyle(f).fontSize), n=0;
-    while(f.scrollWidth>f.clientWidth+1 && size>10.5 && n<20){ size-=0.25; f.style.fontSize=size+'px'; n++; }
-  }
-  fit();
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
-  window.addEventListener('resize', fit);
-})();
+
 
 // paper reader
 (function(){
